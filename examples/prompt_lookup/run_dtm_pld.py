@@ -191,7 +191,7 @@ def run_dtm_pld(batch_input_ids,
         multi_block_mode=args.multi_block_mode,
         cuda_graph_mode=args.cuda_graph_mode,
         enable_context_fmha_fp32_acc=args.enable_context_fmha_fp32_acc,
-        is_orchestrator_mode=True,
+        is_orchestrator_mode=False,
     )
 
     if is_dtm:
