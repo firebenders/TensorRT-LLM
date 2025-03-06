@@ -198,6 +198,7 @@ def run_dtm_pld(batch_input_ids,
         draft_runner_kwargs = common_runner_kwargs.copy()
         draft_runner_kwargs.update(engine_dir=args.draft_engine_dir,
                                    device_ids=draft_device_list)
+        logger.info(f"Draft runner kwargs: {draft_runner_kwargs}")
         draft_runner = ModelRunnerCpp.from_dir(**draft_runner_kwargs)
 
     if target_runner is None:  # Skip this constructor if we have prepared the runner before
