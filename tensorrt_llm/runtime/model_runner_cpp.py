@@ -252,21 +252,21 @@ class ModelRunnerCpp(ModelRunnerMixin):
         # num_layers properties.
         # MPI world size must be 1 in Orchestrator mode
         if is_orchestrator_mode:
-            logger.info(f'[FIREBENDER] Orchestrator mode')
+            logger.error(f'[FIREBENDER] Orchestrator mode')
             tp_size = 1
             pp_size = 1
             cp_size = 1
             # Check the count of devices equal to tp_size of engine
             # assert len(device_ids) == json_config.tensor_parallelism
         else:
-            logger.info(f'[FIREBENDER] Loading config from json_config')
+            logger.error(f'[FIREBENDER] Loading config from json_config')
             tp_size = json_config.tensor_parallelism
             pp_size = json_config.pipeline_parallelism
             cp_size = json_config.context_parallelism
 
         
         gpus_per_node = json_config.gpus_per_node
-        logger.info(f'[FIREBENDER] tp_size: {tp_size}, pp_size: {pp_size}, cp_size: {cp_size}')
+        logger.error(f'[FIREBENDER] tp_size: {tp_size}, pp_size: {pp_size}, cp_size: {cp_size}')
         world_config = WorldConfig.mpi(tensor_parallelism=tp_size,
                                        pipeline_parallelism=pp_size,
                                        context_parallelism=cp_size,
